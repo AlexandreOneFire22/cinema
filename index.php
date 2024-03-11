@@ -11,8 +11,75 @@
 <body>
     <?php include_once "partie/menu.php" ?>
 
+    <div class="container">
 
-<p> test et je croise les doigts</p>
+    <div class="row">
+        <div class=" col-md-6 col-xl-4">
+            <div class="card mb-3 mx-auto">
+                <img src="/assets/images/noir.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Diablo~</h5>
+                    <p class="card-text"> "Noir" était le nom qu'il portait avant d'être renommé Diablo par Limule
+                        Tempest,
+                        ceux-ci viennne de l'animé "Moi
+                        quand je
+                        me suis réinncarné en slime.</p>
+                    <a href="#" class="btn btn-primary">Aller voir</a>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-6 col-xl-4">
+            <div class="card mb-3 mx-auto">
+                <img src="/assets/images/noir.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Diablo~</h5>
+                    <p class="card-text"> "Noir" était le nom qu'il portait avant d'être renommé Diablo par Limule
+                        Tempest,
+                        ceux-ci viennne de l'animé "Moi
+                        quand je
+                        me suis réinncarné en slime.</p>
+                    <a href="#" class="btn btn-primary">Aller voir</a>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-6 col-xl-4">
+            <div class="card mb-3 mx-auto">
+                <img src="/assets/images/noir.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Diablo~</h5>
+                    <p class="card-text"> "Noir" était le nom qu'il portait avant d'être renommé Diablo par Limule
+                        Tempest,
+                        ceux-ci viennne de l'animé "Moi
+                        quand je
+                        me suis réinncarné en slime.</p>
+                    <a href="#" class="btn btn-primary">Aller voir</a>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-6 col-xl-4">
+            <div class="card mb-3 mx-auto">
+                <img src="/assets/images/noir.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Diablo~</h5>
+                    <p class="card-text"> "Noir" était le nom qu'il portait avant d'être renommé Diablo par Limule
+                        Tempest,
+                        ceux-ci viennne de l'animé "Moi
+                        quand je
+                        me suis réinncarné en slime.</p>
+                    <a href="#" class="btn btn-primary">Aller voir</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    </div>
 
 
 <script src="./assets/js/bootstrap.bundle.min.js"></script>

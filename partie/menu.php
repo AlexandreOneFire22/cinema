@@ -1,5 +1,5 @@
 <header>
-    <nav class="navbar navbar-expand-md bg-black-perso border-bottom border-3 border-danger" data-bs-theme="dark">
+    <nav class="navbar navbar-expand-md bg-black-perso border-bottom border-3 border-danger mb-5" data-bs-theme="dark">
         <div class="container-fluid">
             <div class="d-flex justify-content-start">
                 <a class="navbar-brand fs-5 text-danger" href="#">movie-party</a>
@@ -22,7 +22,7 @@
                             <a class="nav-link" href="#contact">Contact</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-primary" href="#tarifs" role="button">Acheter maintenant</a>
+                            <a class="btn btn-danger" href="#tarifs" role="button">Acheter maintenant</a>
                         </li>
                     </ul>
                 </div>
