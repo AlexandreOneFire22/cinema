@@ -47,13 +47,13 @@ $temps="$heure H $minute"
   <link href="../assets/css/cyborg-bootstrap.min.css" rel="stylesheet">
   <title>détails</title>
 </head>
-<body>
+<body class="text-blanc">
 
 <?php include_once "menu.php" ?>
 
 <section class="container mt-3">
 
-    <div class="d-flex justify-content-start">
+    <div class="d-flex justify-content-start bg-light">
         <div>
             <img src="<?=$details[0]["image"]?>" width="300px" class="m-3">
         </div>

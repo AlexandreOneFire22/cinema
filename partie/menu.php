@@ -13,7 +13,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link fs-3" href="#contact">Se connecter</a>
+                            <a class="nav-link fs-3 text-blanc" href="../partie/login.php">Se connecter</a>
                         </li>
                     </ul>
                 </div>
