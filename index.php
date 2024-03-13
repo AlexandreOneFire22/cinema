@@ -17,14 +17,11 @@ $requete->execute();
 
 //4. Récupération des enregistrements
 //1. enregistrement = 1 tableau associatif
-$etudiants = $requete->fetchAll(PDO::FETCH_ASSOC);
+$films = $requete->fetchAll(PDO::FETCH_ASSOC);
 
 $nb=0;
 ?>
 
-<pre>
-    <?php print_r($etudiants); echo  $etudiants[0]["image"] ?>
-</pre>
 
 <!doctype html>
 <html lang="fr">
@@ -42,142 +39,31 @@ $nb=0;
 <body>
     <?php include_once "partie/menu.php" ?>
 
-    <section class="container container-fluid">
-
+    <section class="container">
 
     <div class="row">
 
-        <!-- nb = 0 -->
+        <?php for ($i = 0; $i < count($films); $i++) : ?>
 
-        <div class=" col-md-6 col-xl-3 ">
-            <div class="card mb-3 p-0">
-                <img src="<?= $etudiants[$nb]["image"] ?>" class="card-img-top p-0 p-2" alt="...">
+        <div class=" col-md-6 col-xl-3 p-0">
+            <div class="card mb-3 m-4">
+                <img src="<?= $films[$nb]["image"] ?>" class="card-img-top p-0 p-2" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title"><?= $etudiants[$nb]["titre"] ?></h5>
-                    <p class="card-text text-truncate" style="max-width: 2000px;"> <?= $etudiants[$nb]["résumé"] ?></p>
-                    <a href="partie/details.php?id=<?=$etudiants[$nb]["id"] ?>" class="btn btn-primary">Aller voir</a>
+                    <h5 class="card-title"><?= $films[$nb]["titre"] ?></h5>
+                    <p class="card-text text-truncate" style="max-width: 200px;"> <?= $films[$nb]["résumé"] ?></p>
+                    <a href="partie/details.php?id=<?=$films[$nb]["id"] ?>" class="btn btn-primary">Aller voir</a>
                 </div>
             </div>
         </div>
 
+        <?php $nb++; ?>
 
-        <?php $nb++;?>
-        <!-- nb = 1 -->
-
-
-        <div class=" col-md-6 col-xl-3 ">
-            <div class="card mb-3 p-0">
-                <img src="<?= $etudiants[$nb]["image"] ?>" class="card-img-top p-2" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title"><?= $etudiants[$nb]["titre"] ?></h5>
-                    <p class="card-text text-truncate" style="max-width: 2000px;"> <?= $etudiants[$nb]["résumé"] ?></p>
-                    <a href="#" class="btn btn-primary">Aller voir</a>
-                </div>
-            </div>
-        </div>
-
-
-        <?php $nb++;?>
-        <!-- nb = 2 -->
-
-        <div class=" col-md-6 col-xl-3 ">
-            <div class="card mb-3 p-0">
-                <img src="<?= $etudiants[$nb]["image"] ?>" class="card-img-top p-0 p-2" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title"><?= $etudiants[$nb]["titre"] ?></h5>
-                    <p class="card-text text-truncate" style="max-width: 2000px;"> <?= $etudiants[$nb]["résumé"] ?></p>
-                    <a href="#" class="btn btn-primary">Aller voir</a>
-                </div>
-            </div>
-        </div>
-
-
-        <?php $nb++;?>
-        <!-- nb = 3 -->
-
-
-        <div class=" col-md-6 col-xl-3 ">
-            <div class="card mb-3 p-0">
-                <img src="<?= $etudiants[$nb]["image"] ?>" class="card-img-top p-2" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title"><?= $etudiants[$nb]["titre"] ?></h5>
-                    <p class="card-text text-truncate" style="max-width: 2000px;"> <?= $etudiants[$nb]["résumé"] ?></p>
-                    <a href="#" class="btn btn-primary">Aller voir</a>
-                </div>
-            </div>
-        </div>
-
-
-
-        <?php $nb++;?>
-        <!-- nb = 4 -->
-
-
-
-        <div class=" col-md-6 col-xl-3 ">
-            <div class="card mb-3 p-0">
-                <img src="<?= $etudiants[$nb]["image"] ?>" class="card-img-top p-0 p-2" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title"><?= $etudiants[$nb]["titre"] ?></h5>
-                    <p class="card-text text-truncate" style="max-width: 2000px;"> <?= $etudiants[$nb]["résumé"] ?></p>
-                    <a href="#" class="btn btn-primary">Aller voir</a>
-                </div>
-            </div>
-        </div>
-
-
-        <?php $nb++;?>
-        <!-- nb = 5 -->
-
-
-        <div class=" col-md-6 col-xl-3 ">
-            <div class="card mb-3 p-0">
-                <img src="<?= $etudiants[$nb]["image"] ?>" class="card-img-top p-2" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title"><?= $etudiants[$nb]["titre"] ?></h5>
-                    <p class="card-text text-truncate" style="max-width: 2000px;"> <?= $etudiants[$nb]["résumé"] ?></p>
-                    <a href="#" class="btn btn-primary">Aller voir</a>
-                </div>
-            </div>
-        </div>
-
-
-        <?php $nb++;?>
-        <!-- nb = 6 -->
-
-        <div class=" col-md-6 col-xl-3 ">
-            <div class="card mb-3 p-0">
-                <img src="<?= $etudiants[$nb]["image"] ?>" class="card-img-top p-0 p-2" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title"><?= $etudiants[$nb]["titre"] ?></h5>
-                    <p class="card-text text-truncate" style="max-width: 2000px;"> <?= $etudiants[$nb]["résumé"] ?></p>
-                    <a href="#" class="btn btn-primary">Aller voir</a>
-                </div>
-            </div>
-        </div>
-
-
-        <?php $nb++;?>
-        <!-- nb = 7 -->
-
-
-        <div class=" col-md-6 col-xl-3 ">
-            <div class="card mb-3 p-0">
-                <img src="<?= $etudiants[$nb]["image"] ?>" class="card-img-top p-2" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title"><?= $etudiants[$nb]["titre"] ?></h5>
-                    <p class="card-text text-truncate" style="max-width: 2000px;"> <?= $etudiants[$nb]["résumé"] ?></p>
-                    <a href="#" class="btn btn-primary">Aller voir</a>
-                </div>
-            </div>
-        </div>
-
+        <?php endfor;?>
 
     </div>
 
     </section>
 
-
-<script src="./assets/js/bootstrap.bundle.min.js"></script>
+        <script src="./assets/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

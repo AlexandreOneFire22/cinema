@@ -1,8 +1,8 @@
 <header>
     <nav class="navbar navbar-expand-md bg-black-perso border-bottom border-3 border-danger mb-5" data-bs-theme="dark">
-        <div class="container-fluid">
+        <div class="container-fluid mx-3">
             <div class="d-flex justify-content-start">
-                <a class="navbar-brand fs-5 text-danger" href="#">movie-party</a>
+                <a class="navbar-brand" href=".."> <img src="../assets/image/logo.png" href=".." width="140"></a>
             </div>
             <form class="d-flex justify-content-end">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -13,16 +13,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="#contenu">A propos de la formation</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#avis">Avis</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#contact">Contact</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn btn-danger" href="#tarifs" role="button">Acheter maintenant</a>
+                            <a class="nav-link fs-3" href="#contact">Se connecter</a>
                         </li>
                     </ul>
                 </div>

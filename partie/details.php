@@ -28,12 +28,15 @@ if(isset($_GET["id"])) {
     $details = $requete->fetchAll(PDO::FETCH_ASSOC);
 }
 
+$temps=$details[0]["durée"];
+
+$minute=$temps%60;
+$heure=($temps-$minute)/60;
+
+$temps="$heure H $minute"
+
+
 ?>
-
-<pre>
-    <?php print_r($details); echo  $details[0]["titre"] ?>
-</pre>
-
 <!doctype html>
 <html lang="fr">
 <head>
@@ -52,15 +55,23 @@ if(isset($_GET["id"])) {
 
     <div class="d-flex justify-content-start">
         <div>
-            <img src="<?=$details[0]["image"]?>" width="200px">
+            <img src="<?=$details[0]["image"]?>" width="300px" class="m-3">
         </div>
-        <div class="p-2 w-100">
-            <h1>
-                <?= $details[0]["titre"] ?>
-            </h1>
-            <p>
-                <?= $details[0]["résumé"] ?>
-            </p>
+        <div class="d-flex flex-column mb-3" style="height: 450px;">
+
+            <div> <h1 class="m-3"><?= $details[0]["titre"] ?></h1></div>
+
+            <div class="text-center m-3"> <?= $details[0]["résumé"] ?></div>
+
+            <div class="mt-auto p-2">
+                <div class="d-flex justify-content-evenly">
+
+                    <div>durée : <?= $temps ?></div>
+                    <div> pays : <?= $details[0]["pays"] ?></div>
+                    <div> date de sortie : <?= $details[0]["date_sortie"] ?></div>
+
+                </div>
+            </div>
         </div>
     </div>
 
