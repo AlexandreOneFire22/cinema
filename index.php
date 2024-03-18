@@ -22,6 +22,12 @@ $films = $requete->fetchAll(PDO::FETCH_ASSOC);
 $nb=0;
 ?>
 
+<style>
+    card-img-top {
+        height:400px;
+        width: 200px;
+    }
+</style>
 
 <!doctype html>
 <html lang="fr">

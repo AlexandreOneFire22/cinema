@@ -7,4 +7,4 @@ $utilisateurs = [
     'Florian'
 ];
 
-if ("lol")
+if ("lol");
