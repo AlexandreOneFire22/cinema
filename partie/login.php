@@ -50,8 +50,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $erreurs ["email"] = "L'email est obligatoire.";
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $erreurs ["email"] = "L'email n'est pas valide.";
-    }elseif () {
-        $erreurs ["email"] = "L'email n'est pas valide.";
     }
     if (empty($mdp)) {
         $erreurs ["mdp"] = "Le mot de passe est obligatoire.";
@@ -104,7 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <?php include_once 'menu.php' ?>
 
 <div class="container">
-    <h3 class="ms-5">Formulaire :</h3>
+    <h3 class="ms-5">Se connecter :</h3>
 
     <div class="w-75 mx-auto">
         <form action="" method="post" novalidate>

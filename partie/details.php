@@ -26,7 +26,28 @@ if(isset($_GET["id"])) {
 //4. Récupération des enregistrements
 //1. enregistrement = 1 tableau associatif
     $details = $requete->fetchAll(PDO::FETCH_ASSOC);
+
+
+
+    $requete = $pdo->prepare("SELECT * FROM film");
+
+//3. Exécution de la requête
+    $requete->execute();
+
+//4. Récupération des enregistrements
+//1. enregistrement = 1 tableau associatif
+    $films = $requete->fetchAll(PDO::FETCH_ASSOC);
+
+    if ($id-1>count($films)){
+        header("Location: ../index.php");
+        exit();
+    }
+
+}else{
+    header("Location: ../index.php");
+    exit();
 }
+
 
 $temps=$details[0]["durée"];
 
@@ -57,7 +78,7 @@ $temps="$heure H $minute"
         <div>
             <img src="<?=$details[0]["image"]?>" width="300px" class="m-3">
         </div>
-        <div class="d-flex flex-column mb-3" style="height: 450px;">
+        <div class="d-flex flex-column mb-3 mx-5" style="height: 450px;">
 
             <div> <h1 class="m-3"><?= $details[0]["titre"] ?></h1></div>
 
