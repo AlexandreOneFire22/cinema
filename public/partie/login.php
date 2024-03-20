@@ -101,7 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <body class="bg-light">
 <!--Insertion d'un menu-->
 
-<?php include_once 'menu.php' ?>
+<?php include_once 'header.php' ?>
 
 <div class="container">
     <h3 class="ms-5">Formulaire :</h3>

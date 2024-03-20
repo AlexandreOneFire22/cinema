@@ -7,25 +7,10 @@ $id = null;
 if(isset($_GET["id"])) {
     $id = $_GET["id"];
 
-// Récupérer la liste des étudiants dans la table etudiant
+    require_once "../../base.php";
+    require_once BASE_PROJET."/src/database/db-films.php";
 
-//1. connexion à la base de données db_intro
-    /**
-     * @var PDO $pdo
-     */
-
-    require "../config/db_config.php";
-
-//2. Prépareration de la requête
-
-    $requete = $pdo->prepare("SELECT * FROM film WHERE id = $id");
-
-//3. Exécution de la requête
-    $requete->execute();
-
-//4. Récupération des enregistrements
-//1. enregistrement = 1 tableau associatif
-    $details = $requete->fetchAll(PDO::FETCH_ASSOC);
+    $details = getDetails($id);
 }
 
 $temps=$details[0]["durée"];
@@ -49,7 +34,7 @@ $temps="$heure H $minute"
 </head>
 <body class="text-blanc">
 
-<?php include_once "menu.php" ?>
+<?php include_once "header.php" ?>
 
 <section class="container mt-3">
 

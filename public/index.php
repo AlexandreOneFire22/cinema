@@ -1,23 +1,9 @@
 <?php
-// Récupérer la liste des étudiants dans la table etudiant
 
-//1. connexion à la base de données db_intro
-/**
- * @var PDO $pdo
- */
+require_once "../base.php";
+require_once BASE_PROJET."/src/database/db-films.php";
 
-require "config/db_config.php";
-
-//2. Prépareration de la requête
-
-$requete = $pdo->prepare("SELECT * FROM film");
-
-//3. Exécution de la requête
-$requete->execute();
-
-//4. Récupération des enregistrements
-//1. enregistrement = 1 tableau associatif
-$films = $requete->fetchAll(PDO::FETCH_ASSOC);
+$films=getFilms();
 
 $nb=0;
 ?>
@@ -36,14 +22,14 @@ $nb=0;
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="./assets/css/cyborg-bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/cyborg-bootstrap.min.css" rel="stylesheet">
 
 
 
     <title>cinéma</title>
 </head>
 <body>
-    <?php include_once "partie/menu.php" ?>
+    <?php include_once "partie/header.php" ?>
 
     <section class="container">
 
@@ -84,6 +70,6 @@ $nb=0;
 
     </section>
 
-        <script src="./assets/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
