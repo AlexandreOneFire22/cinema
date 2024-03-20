@@ -8,20 +8,15 @@
 //var_dump($_SERVER);
 //echo "</pre>";
 
-/**
- * @var PDO $pdo
- */
 
-require "../config/db_config.php";
 
-$requete = $pdo->prepare("SELECT 'email_utilisateur' FROM utilisateur");
+require_once "../base.php";
+require_once BASE_PROJET."\src\config\db_config.php";
+require_once BASE_PROJET."\src\database\db-utilisateurs.php";
 
-//3. Exécution de la requête
-$requete->execute();
+$pdo=getConnexion();
 
-//4. Récupération des enregistrements
-//1. enregistrement = 1 tableau associatif
-$emails = $requete->fetchAll(PDO::FETCH_ASSOC);
+$emails = getUtilisateur();
 
 
 
@@ -37,24 +32,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     //Récupérer les valeur saisie par l'utilisateur
     // Superglobale $_POST : tableau associatif
 
-    $pseudo = $_POST["pseudo"];
-    $email = $_POST["email"];
-    $mdp = $_POST["mdp"];
+    $pseudo = $_POST["pseudo_utilisateur"];
+    $email = $_POST["email_utilisateur"];
+    $mdp = $_POST["mdp_utilisateur"];
     $mdpVerif = $_POST["mdpVerif"];
 
     //Validation des données
     if (empty($pseudo)) {
-        $erreurs ["pseudo"] = "Le pseudo est obligatoire.";
+        $erreurs ["pseudo_utilisateur"] = "Le pseudo est obligatoire.";
     }
     if (empty($email)) {
-        $erreurs ["email"] = "L'email est obligatoire.";
+        $erreurs ["email_utilisateur"] = "L'email est obligatoire.";
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $erreurs ["email"] = "L'email n'est pas valide.";
-    }elseif () {
-        $erreurs ["email"] = "L'email n'est pas valide.";
+        $erreurs ["email_utilisateur"] = "L'email n'est pas valide.";
     }
     if (empty($mdp)) {
-        $erreurs ["mdp"] = "Le mot de passe est obligatoire.";
+        $erreurs ["mdp_utilisateur"] = "Le mot de passe est obligatoire.";
     }
     if (empty($mdpVerif)) {
         $erreurs ["mdpVerif"] = "Le mot de passe doit être à nouveau saisie.";
@@ -72,14 +65,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         $mdpHacher=password_hash($mdp,PASSWORD_DEFAULT);
 
-        $requete = $pdo->prepare("INSERT INTO utilisateur VALUES ($pseudo, $email, $mdpHacher)");
+        $requete = "INSERT INTO utilisateur (pseudo_utilisateur,email_utilisateur,mdp_utilisateur) VALUES (?,?,?)";
+        $pdo->prepare($requete)->execute(array(
+            "pseudo_utilisateur" => $pseudo,
+            "email_utilisateur" => $email,
+            "mdp_utilisateur" => $mdpHacher,
+        ));
+
+
+        //$requete = $pdo->prepare("INSERT INTO utilisateur VALUES ($pseudo, $email, $mdpHacher)");
 
 //3. Exécution de la requête
-        $requete->execute();
+        //$requete->execute();
 
-
-
-        header("Location: ../index.php");
+        header("Location: index.php");
         exit();
     }
 
@@ -95,13 +94,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="../assets/css/cyborg-bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/cyborg-bootstrap.min.css" rel="stylesheet">
     <title>Login</title>
 </head>
 <body class="bg-light">
 <!--Insertion d'un menu-->
 
-<?php include_once 'header.php' ?>
+<?php require_once BASE_PROJET."\src\_partials\header.php" ?>
 
 <div class="container">
     <h3 class="ms-5">Formulaire :</h3>
@@ -112,15 +111,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <div class="mb-3">
                 <label for="pseudo" class="form-label">Pseudo* :</label>
                 <input type="text"
-                       class="form-control <?= (isset($erreurs["pseudo"])) ? "border border-2 border-danger" : "" ?>"
+                       class="form-control <?= (isset($erreurs["pseudo_utilisateur"])) ? "border border-2 border-danger" : "" ?>"
                        id="pseudo"
-                       name="pseudo"
+                       name="pseudo_utilisateur"
                        value="<?= $pseudo ?>"
                        placeholder="Saisissez votre pseudo">
 
-                <?php if (isset($erreurs["pseudo"])) : ?>
+                <?php if (isset($erreurs["pseudo_utilisateur"])) : ?>
 
-                    <p class="form-text text-danger"> <?= $erreurs["pseudo"] ?></p>
+                    <p class="form-text text-danger"> <?= $erreurs["pseudo_utilisateur"] ?></p>
 
                 <?php endif; ?>
             </div>
@@ -128,14 +127,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <div class="mb-3">
                 <label for="email" class="form-label">Email* :</label>
                 <input type="text"
-                       class="form-control <?= (isset($erreurs["email"])) ? "border border-2 border-danger" : "" ?>"
+                       class="form-control <?= (isset($erreurs["email_utilisateur"])) ? "border border-2 border-danger" : "" ?>"
                        id="email"
-                       name="email" value="<?= $email ?>" placeholder="Saisissez votre email"
+                       name="email_utilisateur" value="<?= $email ?>" placeholder="Saisissez votre email"
                        aria-describedby="emailHelp">
 
-                <?php if (isset($erreurs["email"])) : ?>
+                <?php if (isset($erreurs["email_utilisateur"])) : ?>
 
-                    <p class="form-text text-danger"> <?= $erreurs["email"] ?></p>
+                    <p class="form-text text-danger"> <?= $erreurs["email_utilisateur"] ?></p>
 
                 <?php endif; ?>
             </div>
@@ -143,12 +142,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <div class="mb-3">
                 <label for="mdp" class="form-label">mot de passe* :</label>
                 <input type="password"
-                       class="form-control <?= (isset($erreurs["mdp"])) ? "border border-2 border-danger" : "" ?>"
-                       id="mdp" name="mdp" placeholder="Saisissez votre mot de passe">
+                       class="form-control <?= (isset($erreurs["mdp_utilisateur"])) ? "border border-2 border-danger" : "" ?>"
+                       id="mdp" name="mdp_utilisateur" placeholder="Saisissez votre mot de passe">
 
-                <?php if (isset($erreurs["mdp"])) : ?>
+                <?php if (isset($erreurs["mdp_utilisateur"])) : ?>
 
-                    <p class="form-text text-danger"> <?= $erreurs["mdp"] ?></p>
+                    <p class="form-text text-danger"> <?= $erreurs["mdp_utilisateur"] ?></p>
 
                 <?php endif; ?>
             </div>
@@ -171,6 +170,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </div>
 </div>
 
-<script src="../assets/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

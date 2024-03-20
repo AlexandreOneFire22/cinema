@@ -7,7 +7,7 @@ $id = null;
 if(isset($_GET["id"])) {
     $id = $_GET["id"];
 
-    require_once "../../base.php";
+    require_once "..\base.php";
     require_once BASE_PROJET."/src/database/db-films.php";
 
     $details = getDetails($id);
@@ -29,12 +29,12 @@ $temps="$heure H $minute"
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link href="../assets/css/cyborg-bootstrap.min.css" rel="stylesheet">
+  <link href="assets/css/cyborg-bootstrap.min.css" rel="stylesheet">
   <title>détails</title>
 </head>
 <body class="text-blanc">
 
-<?php include_once "header.php" ?>
+<?php include_once BASE_PROJET."\src\_partials\header.php" ?>
 
 <section class="container mt-3">
 
@@ -64,6 +64,6 @@ $temps="$heure H $minute"
 
 
 
-<script src="../assets/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

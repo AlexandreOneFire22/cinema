@@ -3,16 +3,16 @@ require_once BASE_PROJET."\src\config\db_config.php";
 
 // fonction permettant de récupérer tous les films
 
-function getFilms():array
+function getUtilisateur():array
 {
     $pdo = getConnexion();
-    $requete = $pdo->query("SELECT * FROM film");
+    $requete = $pdo->query("SELECT * FROM utilisateur");
     return $requete->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function getDetails($id):array
+function getMail():array
 {
     $pdo = getConnexion();
-    $requete = $pdo->query("SELECT * FROM film WHERE id = $id");
+    $requete = $pdo->query("SELECT 'email_utilisateur' FROM utilisateur");
     return $requete->fetchAll(PDO::FETCH_ASSOC);
 }

@@ -1,4 +1,5 @@
 <?php
+require_once "../../base.php";
 // Récupérer la liste des étudiants dans la table etudiant
 
 //1. connexion à la base de données db_intro
